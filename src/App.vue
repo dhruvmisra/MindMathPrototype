@@ -53,6 +53,13 @@
           </div>
           <h3 class="text-danger" v-else>Lost</h3>
         </div>
+
+        <button class="btn btn-secondary help-btn" @click="showHelp = !showHelp">Help</button>
+        <div class="help p-3" v-if="showHelp">
+          50 * 3 = 150 <br>
+          150 + 75 + 7 + 1 = 233 <br>
+          233 * 4 = 932
+        </div>
       </section>
     </div>
 
@@ -83,7 +90,8 @@ export default {
           res: null
         },
       ],
-      status: 'running'
+      status: 'running',
+      showHelp: false,
     };
   },
   watch: {
@@ -218,5 +226,17 @@ export default {
 .result, .target, .numbers, .operators {
   background: rgb(62, 42, 92);
   box-shadow: 0 5px 15px rgba(40, 27, 59, 0.6);
+}
+.help-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.help {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: black;
+  border-radius: 10px;
 }
 </style>
