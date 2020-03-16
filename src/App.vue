@@ -30,7 +30,7 @@
             :key="operator"
           >{{ operator }}</button>
         </div>
-        <p class="mt-3">Operators Used: {{ operationsUsed }}</p>
+        <p class="mt-3">Operators Used: {{ operatorsUsed }}</p>
 
         <button class="btn btn-info d-block mx-auto my-5 w-100" :disabled="status != 'running'" @click="compute">Compute</button>
       </section>
@@ -49,7 +49,7 @@
         <div v-if="status != 'running'" class="result text-center my-3 p-3">
           <div class="text-success" v-if="status == 'won'">
             <h3>Won</h3>
-            <p>Score (Slots + Operators Used + Time left): {{ currentSlot+1 }} + {{ operationsUsed.length }} + {{ timer }} = {{ currentSlot+1+operationsUsed.length+timer }}</p>
+            <p>Score (Slots + Operators Used + Time left): {{ currentSlot+1 }} + {{ operatorsUsed.length }} + {{ timer }} = {{ currentSlot+1+operatorsUsed.length+timer }}</p>
           </div>
           <h3 class="text-danger" v-else>Lost</h3>
         </div>
@@ -80,7 +80,7 @@ export default {
       operators: ["+", "-", "*", "/"],
       selectedNumbers: [],
       selectedOp: '',
-      operationsUsed: [],
+      operatorsUsed: [],
       currentSlot: 0,
       slots: [
         {
@@ -133,6 +133,7 @@ export default {
       this.selectedOp = '';
     },
     compute() {
+      // Checking the required conditions
       if(this.selectedNumbers.length < 2 || this.selectedOp == '') {
         return;
       }
@@ -140,6 +141,7 @@ export default {
       let num1 = this.selectedNumbers[0],
           num2 = this.selectedNumbers[1]
 
+      // Computing the result
       switch(this.slots[this.currentSlot].op) {
         case '+':
           this.slots[this.currentSlot].res = num1 + num2;
@@ -155,14 +157,17 @@ export default {
           break;
       }
 
+      // Update numbers array
       this.numbers.splice(this.numbers.indexOf(num1), 1);
       this.numbers.splice(this.numbers.indexOf(num2), 1);
       this.numbers.push(this.slots[this.currentSlot].res);
 
-      if(this.operationsUsed.indexOf(this.slots[this.currentSlot].op) == -1) {
-        this.operationsUsed.push(this.slots[this.currentSlot].op);
+      // Update operatorsUsed
+      if(this.operatorsUsed.indexOf(this.slots[this.currentSlot].op) == -1) {
+        this.operatorsUsed.push(this.slots[this.currentSlot].op);
       }
 
+      // Checking answer and end of game
       if(this.target == this.slots[this.currentSlot].res) {
         this.status = 'won';
         clearInterval(this.timerInterval);
@@ -173,6 +178,7 @@ export default {
         return;
       }
 
+      // Reinitializing state variables
       this.selectedNumbers = [];
       this.selectedOp = '';
       this.currentSlot++;
