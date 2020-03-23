@@ -326,6 +326,8 @@ export default {
   font-weight: bold;
   padding: 10px;
   margin: 5px;
+  border: none;
+  color: white;
   border: solid 1px white;
   border-radius: 50%;
   background: transparent;
@@ -346,6 +348,8 @@ export default {
   font-size: 2em;
   font-weight: bold;
   padding: 20px;
+  border: none;
+  color: white;
 }
 .btn-operator:hover {
   font-size: 1.6em;

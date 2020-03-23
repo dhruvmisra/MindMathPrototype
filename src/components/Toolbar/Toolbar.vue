@@ -69,7 +69,7 @@ export default {
   border: 0;
   border-radius: 5.5px;
 }
-button {
+.toolbar button {
   -webkit-appearance: button;
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
