@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Toolbar :showHelp="showHelp" :status="status" @playClicked="start" @restartClicked="restart" />
+    <Toolbar :showHelp="showHelp" :status="status" @playClicked="start" @restartClicked="restart" @hintClicked="showHelp = !showHelp" />
     <div class="main-container">
       <section class="selection w-50">
         <!-- <h5 class="mt-5">Numbers: {{ selectedNumbers }}</h5> -->
@@ -57,7 +57,7 @@
           <h3 class="text-danger" v-else>Lost</h3>
         </div>
 
-        <button class="btn btn-secondary help-btn" @click="showHelp = !showHelp">Help</button>
+        <!-- <button class="btn btn-secondary help-btn" @click="showHelp = !showHelp">Help</button> -->
         <div class="help p-3" v-if="showHelp">
           50 * 3 = 150 <br>
           150 + 75 + 7 + 1 = 233 <br>
@@ -203,7 +203,7 @@ export default {
         op: '',
         res: null
       }];
-      
+      this.status = 'running';
     },
     compute() {
       // Checking the required conditions
@@ -414,9 +414,8 @@ button:disabled:hover {
 }
 .help {
   position: fixed;
-  bottom: 70px;
-  right: 20px;
+  top: 55px;
+  left: 200px;
   background: black;
-  border-radius: 10px;
 }
 </style>

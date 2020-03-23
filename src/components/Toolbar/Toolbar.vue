@@ -4,8 +4,9 @@
     <toolbar-item isSplitbar="true"></toolbar-item>
     
     <toolbar-item ref="playBtn" v-if="status == 'not-started'" id="play-button" @clicked="$emit('playClicked')" :title="l10n.stringPlay"></toolbar-item>
-    <toolbar-item ref="restartBtn" v-if="status == 'running'" id="restart-button" @clicked="$emit('restartClicked')" :title="l10n.stringRestart"></toolbar-item>
+    <toolbar-item ref="restartBtn" v-if="status != 'not-started'" id="restart-button" @clicked="$emit('restartClicked')" :title="l10n.stringRestart"></toolbar-item>
     <toolbar-item ref="undoBtn" v-if="status == 'running'" id="undo-button" @clicked="$emit('undoClicked')" :title="l10n.stringUndo"></toolbar-item>
+    <toolbar-item ref="hintBtn" v-if="status == 'running'" id="hint-button" @clicked="$emit('hintClicked')" :title="l10n.stringHint"></toolbar-item>
     <toolbar-item isSplitbar="true"></toolbar-item>
 
     <toolbar-item ref="networkBtn" id="network-button" :title="l10n.stringNetwork"></toolbar-item>
