@@ -59,9 +59,11 @@
 
         <!-- <button class="btn btn-secondary help-btn" @click="showHelp = !showHelp">Help</button> -->
         <div class="help p-3" v-if="showHelp">
-          50 * 3 = 150 <br>
-          150 + 75 + 7 + 1 = 233 <br>
-          233 * 4 = 932
+          7 * 3 = 21 <br>
+          21 + 1 = 22 <br>
+          75 * 50 = 3750 <br>
+          3750 - 22 = 3728 <br>
+          3728 / 4 = 932
         </div>
       </section>
       <section class="timer w-50">
