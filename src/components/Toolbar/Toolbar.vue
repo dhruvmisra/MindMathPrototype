@@ -8,6 +8,7 @@
     <toolbar-item ref="undoBtn" v-if="status == 'running'" id="undo-button" @clicked="$emit('undoClicked')" :title="l10n.stringUndo"></toolbar-item>
     <toolbar-item ref="hintBtn" v-if="status == 'running'" id="hint-button" @clicked="$emit('hintClicked')" :title="l10n.stringHint"></toolbar-item>
     <toolbar-item isSplitbar="true"></toolbar-item>
+    <toolbar-item ref="difficultyBtn" v-if="status == 'running'" id="difficulty-button" @clicked="$emit('difficultyClicked')" :title="l10n.stringDifficulty"></toolbar-item>
 
     <toolbar-item ref="networkBtn" id="network-button" :title="l10n.stringNetwork"></toolbar-item>
 
